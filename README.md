@@ -32,13 +32,13 @@ Feel free to use any debugging tools you've learned in order to solve the challe
 
 If you get stuck, you are allowed to skip tasks. You can submit without completing all the instructions. You don't need to complete all of the tasks in order to get meaningful feedback on your code.
 
-### 1. Fix errors in `newsletter.rb` so that it runs without errors
+### 1. Fix errors in `newsletter.rb` so that it runs without errors###
 
 If you run `ruby newsletter.rb`, you'll notice that the code exits with an error. Before you try the next tasks, get the code to run without errors.
 
 As you solve the rest of the tasks, make sure that you can continue to run `ruby newsletter.rb` without errors.
 
-### 2. Fix the `format_campus_location` method so that it has the correct output
+### 2. Fix the `format_campus_location` method so that it has the correct output###
 
 When you run `ruby newsletter.rb`, the subject line shows
 

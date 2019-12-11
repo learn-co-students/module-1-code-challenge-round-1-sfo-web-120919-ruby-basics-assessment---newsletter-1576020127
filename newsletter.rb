@@ -25,16 +25,30 @@ ARTICLES = [
 # Methods to generate the newsletter
 #########################
 
-def calculate_recipients
+def calculate_recipients(subscribers, unsubscribed)
+  arr = []
+  subscribers.each do |sub_email|
+    unsubscribed.each do |unsub_email|
+      if sub_email != unsub_email
+        arr << sub_email
+      end
+    break
+  end
+    end
+    arr 
+  
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
 end
 
-def first_n_articles(number_of_articles
+def first_n_articles(number_of_articles)
   ARTICLES.first(number_of_articles)
 end
 
 def print_recipients
+  p calculate_recipients
+
+  
   # Write a method that uses the output of calculate_recipients
   # and returns a list of emails separated by commas
   # Ex) "abc@email.com, def@email.com, ghi@email.com"
@@ -52,7 +66,8 @@ def print_many_articles(articles)
 end
 
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  key = campus.keys
+  "Flatiron #{campus[key[0]]}"
 end
 
 def format_subject
@@ -78,7 +93,7 @@ def print_newsletter(number)
   print_many_articles(articles)
   puts format_footer(CAMPUS)
 
-  end
+
 end
 
 def run
