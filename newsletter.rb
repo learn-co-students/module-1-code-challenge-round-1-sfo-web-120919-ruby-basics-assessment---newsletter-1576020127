@@ -1,7 +1,7 @@
 #########################
 # Data for the newsletter
 #########################
-
+require 'pry'
 CAMPUS = {
   "name": "DC",
   "address": "1440 G St NW, Washington, DC 20005",
@@ -28,31 +28,78 @@ ARTICLES = [
 def calculate_recipients
   # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
   # write a method that will return an array of only the subscribers who haven't unsubscribed
+  result = []
+  new_arr = []
+  UNSUBSCRIBED.each do |unsub_list|
+    SUBSCRIBERS.each do |sub_list|
+      if sub_list != unsub_list
+          result << sub_list
+      # else 
+      #     new_arr << sub_list
+      end
+    end
+  end
+  # puts result
+  # puts new_arr
+  # return result
+  
+
 end
 
-def first_n_articles(number_of_articles
-  ARTICLES.first(number_of_articles)
+
+def first_n_articles(number_of_articles)
+  i = 0
+  len = number_of_articles.to_i
+  while i < 3 do 
+    puts ARTICLES[i][:title]
+    puts "by: #{ARTICLES[i][:author]}"
+    puts ARTICLES[i][:text]
+    puts
+    i += 1
+  end
+
 end
 
 def print_recipients
   # Write a method that uses the output of calculate_recipients
   # and returns a list of emails separated by commas
   # Ex) "abc@email.com, def@email.com, ghi@email.com"
+  # array =["rhona@grimes.info", "edmond@ko.org", "bryant@cummingsfisher.biz"]
+
+  array = calculate_recipients
+  list = array.join(",")
+  print list
+
 end
 
 def print_one_article(article)
   # Write a method that will take an article hash
   # and print the title, author and text as a formatted string
   # See the README/sample output for examples
+  # ------- if array of hashes is going to pass on ----------
+  # article.each do |element|
+  #   puts element[:title]
+  #   puts "by: #{element[:author]}"
+  #   puts element[:text]
+  #   puts
+  # end
+  #--------if single pair(key and value) are going to pass on ------------
+  puts article[:title]
+  puts "by: #{article[:author]}"
+  puts article[:text]
+  puts
 end
 
 def print_many_articles(articles)
   # Write a method that will take in an array of article hashes
   # and format each one using the print_one_article method
+  ARTICLES.each do |element|
+    print_one_article(element)
+  end
 end
 
 def format_campus_location(campus)
-  "Flatiron #{campus["name"]}"
+  "Flatiron #{campus[:"name"]}"
 end
 
 def format_subject
@@ -71,7 +118,7 @@ def print_newsletter(number)
 
   print "RECIPIENTS: "
   print_recipients
-
+puts
   puts "\nBODY:"
   format_subject
   articles = first_n_articles(number)
@@ -79,7 +126,7 @@ def print_newsletter(number)
   puts format_footer(CAMPUS)
 
   end
-end
+
 
 def run
   # We want our program to print three articles by default,
